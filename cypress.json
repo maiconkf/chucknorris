@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "chromeWebSecurity": false,
+  "component": {
+    "componentFolder": "src",
+    "testFiles": "**/*spec.js"
+  },
+
+  "env": {
+    "api": "https://api.chucknorris.io/jokes/search?query="
+  }
+}

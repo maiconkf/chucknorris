@@ -1,5 +1,5 @@
 <template>
-  <styled-input type="search" id="search" required />
+  <styled-input type="search" id="search" data-cy="search" required />
 </template>
 
 <script>

@@ -2,10 +2,10 @@
   <styled-form @submit.prevent>
     <Input />
     <Flex justify="center">
-      <Button :method="fetchJoke" :type="(type = 'all')"
+      <Button :method="fetchJoke" :type="(type = 'all')" :cy="(cy = 'all')"
         >Chuck Norris Search</Button
       >
-      <Button :method="fetchJoke" :type="(type = 'lucky')"
+      <Button :method="fetchJoke" :type="(type = 'lucky')" :cy="(cy = 'lucky')"
         >I'm feeling lucky</Button
       >
     </Flex>
@@ -18,6 +18,9 @@
           </Flex>
         </Box>
       </div>
+    </div>
+    <div v-else>
+      <h2 data-cy="404">Joke not found :(</h2>
     </div>
   </styled-form>
 </template>
@@ -42,6 +45,7 @@ export default {
     return {
       jokes: [],
       type: "lucky",
+      cy: "lucky",
     };
   },
   methods: {
@@ -52,7 +56,13 @@ export default {
       fetch(`https://api.chucknorris.io/jokes/search?query=${search}`)
         .then((response) => response.json())
         .then((data) => {
-          this.jokes = type === "lucky" ? [data.result[0]] : data.result;
+          const { result } = data;
+
+          if (result.length) {
+            this.jokes = type === "lucky" ? [data.result[0]] : data.result;
+          } else {
+            this.jokes = null;
+          }
         });
     },
   },

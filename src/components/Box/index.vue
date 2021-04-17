@@ -1,5 +1,5 @@
 <template>
-  <styled-box>
+  <styled-box data-cy="box">
     <slot />
   </styled-box>
 </template>

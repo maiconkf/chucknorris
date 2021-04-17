@@ -1,5 +1,5 @@
 <template>
-  <styled-button @click="getMethod(type)">
+  <styled-button @click="getMethod(type)" :data-cy="cy">
     <slot />
   </styled-button>
 </template>
@@ -9,7 +9,7 @@ import { StyledButton } from "./styles";
 
 export default {
   name: "Button",
-  props: ["method", "type"],
+  props: ["method", "type", "cy"],
   components: {
     "styled-button": StyledButton,
   },
